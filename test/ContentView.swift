@@ -6,11 +6,23 @@
 //
 
 import SwiftUI
+import UIKit
+import CoreMotion
+
 
 struct ContentView: View {
+    @ObservedObject var sensor = MotionSensor()
+    
     var body: some View {
-        Text("Hello, Gen")
-            .padding()
+        VStack {
+            Text(String(sensor.time))
+            let _ = print(sensor.xList)
+            Button(action: {
+                self.sensor.isStarted ? self.sensor.stop() : self.sensor.start()
+            }) {
+                self.sensor.isStarted ? Text("STOP") : Text("START")
+            }
+        }
     }
 }
 
@@ -20,15 +32,15 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-import UIKit
-import CoreMotion
+
 class MotionSensor: NSObject, ObservableObject {
     
     @Published var isStarted = false
+    @Published var time = 0.0
     
-    @Published var xStr = "0.0"
-    @Published var yStr = "0.0"
-    @Published var zStr = "0.0"
+    @Published var xList = []
+    @Published var yList = []
+    @Published var zList = []
     
     let motionManager = CMMotionManager()
     
@@ -49,9 +61,15 @@ class MotionSensor: NSObject, ObservableObject {
     }
     
     private func updateMotionData(deviceMotion:CMDeviceMotion) {
-        xStr = String(deviceMotion.userAcceleration.x)
-        yStr = String(deviceMotion.userAcceleration.y)
-        zStr = String(deviceMotion.userAcceleration.z)
+        xList.append(deviceMotion.userAcceleration.x)
+        yList.append(deviceMotion.userAcceleration.y)
+        zList.append(deviceMotion.userAcceleration.z)
+        time += 0.1
+        
+        if time >= 5.0 {
+            self.stop()
+            time = 0.0
+        }
     }
     
 }
