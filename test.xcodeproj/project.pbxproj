@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7175660527A1CB2500F639EC /* abc.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7175660427A1CB2500F639EC /* abc.mlmodel */; };
+		71AE04A827A1EE3200B7D235 /* MarsHabitatPricer.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71AE04A727A1EE3200B7D235 /* MarsHabitatPricer.mlmodel */; };
+		71AE04AA27A1EF1400B7D235 /* BERTSQUADFP16.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71AE04A927A1EF1400B7D235 /* BERTSQUADFP16.mlmodel */; };
 		71E12F13279A92500051ED7C /* testApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E12F12279A92500051ED7C /* testApp.swift */; };
 		71E12F15279A92500051ED7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E12F14279A92500051ED7C /* ContentView.swift */; };
 		71E12F17279A92510051ED7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71E12F16279A92510051ED7C /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7175660427A1CB2500F639EC /* abc.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = abc.mlmodel; path = ../../../../Downloads/abc.mlmodel; sourceTree = "<group>"; };
+		71AE04A727A1EE3200B7D235 /* MarsHabitatPricer.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MarsHabitatPricer.mlmodel; path = "../../../../Downloads/IntegratingACoreMLModelIntoYourApp (1)/MarsHabitatPricePredictor/Resources/MarsHabitatPricer.mlmodel"; sourceTree = "<group>"; };
+		71AE04A927A1EF1400B7D235 /* BERTSQUADFP16.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = BERTSQUADFP16.mlmodel; path = ../../../../Downloads/BERTSQUADFP16.mlmodel; sourceTree = "<group>"; };
 		71CC288F27A14E8E00DA2FE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		71E12F0F279A92500051ED7C /* test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71E12F12279A92500051ED7C /* testApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testApp.swift; sourceTree = "<group>"; };
@@ -52,6 +58,9 @@
 		71E12F11279A92500051ED7C /* test */ = {
 			isa = PBXGroup;
 			children = (
+				71AE04A927A1EF1400B7D235 /* BERTSQUADFP16.mlmodel */,
+				71AE04A727A1EE3200B7D235 /* MarsHabitatPricer.mlmodel */,
+				7175660427A1CB2500F639EC /* abc.mlmodel */,
 				71CC288F27A14E8E00DA2FE3 /* Info.plist */,
 				71E12F12279A92500051ED7C /* testApp.swift */,
 				71E12F14279A92500051ED7C /* ContentView.swift */,
@@ -140,6 +149,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				71E12F15279A92500051ED7C /* ContentView.swift in Sources */,
+				7175660527A1CB2500F639EC /* abc.mlmodel in Sources */,
+				71AE04A827A1EE3200B7D235 /* MarsHabitatPricer.mlmodel in Sources */,
+				71AE04AA27A1EF1400B7D235 /* BERTSQUADFP16.mlmodel in Sources */,
 				71E12F13279A92500051ED7C /* testApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
