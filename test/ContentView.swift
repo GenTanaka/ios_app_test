@@ -41,7 +41,7 @@ class MotionSensor: NSObject, ObservableObject {
     @Published var xList: Array<Float> = []
     @Published var yList: Array<Float> = []
     @Published var zList: Array<Float> = []
-    @Published var MLList: Array<Float> = []
+    @Published var mlList: Array<Float> = []
     
     let motionManager = CMMotionManager()
     
@@ -59,13 +59,9 @@ class MotionSensor: NSObject, ObservableObject {
     func stop() {
         isStarted = false
         motionManager.stopDeviceMotionUpdates()
-        for list in [xList,yList,zList] {
-            MLList.append(list.max()!)
-            MLList.append(list.min()!)
-            MLList.append(average(list))
-            MLList.append(variance(list))
-        }
-        let _ = abcCoreML(MLList)
+        self.calculate()
+        let _ = abcCoreML(mlList)
+        self.reset()
     }
     
     private func updateMotionData(deviceMotion:CMDeviceMotion) {
@@ -76,7 +72,24 @@ class MotionSensor: NSObject, ObservableObject {
         
         if time >= 5.0 {
             self.stop()
-            time = 0.0
+        }
+    }
+    
+    private func reset() {
+        isStarted = false
+        time = 0.0
+        xList = []
+        yList = []
+        zList = []
+        mlList = []
+    }
+    
+    private func calculate() {
+        for list in [xList,yList,zList] {
+            mlList.append(list.max()!)
+            mlList.append(list.min()!)
+            mlList.append(average(list))
+            mlList.append(variance(list))
         }
     }
     
@@ -108,10 +121,10 @@ func abcCoreML(_ coreMotion: Array<Float>) {
         mlArray[index] = NSNumber(value: element)
     }
 
-    let modelInput = abcInput(input_2: mlArray)
+    let modelInput = abcInput(input_8: mlArray)
     guard let output = try? abcModel.prediction(from: modelInput) else {
         fatalError("The abc model is unable to make a prediction.")
     }
-    print(output.featureValue(for: "Identify") ?? "none")
+    print(output.featureValue(for: "Identity") ?? "none")
 }
 //https://yukblog.net/core-motion-basics/

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/gentanaka/Desktop/ios_practice/ios_app_test/abc_miniproject.xcodeproj">
    </FileRef>
 </Workspace>
